@@ -3,3 +3,7 @@ information on your device! we hope this is simpler than Shell commands...
 
 man - prints this whole manual, have fun reading.
 
+ls - lists all files in a directory
+	-l - shows permissions and owner in addition to file name.
+
+env - prints the collection of system variables and values.
