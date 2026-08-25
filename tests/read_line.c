@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include "main.h"
+
+/**
+* read_line - reading the provided line
+*
+* Return: line without the '$'
+*/
+
+char *readline(void)
+{
+	char *buffer;
+	size_t buffs;
+	ssize_t reader;
+
+	reader = getline(&buffer, &buffs, stdin);
+	
+	printf("testing to see if works");
+	if (reader != -1)
+	{
+		if (buffer[reader - 1] == '\n')
+		{
+			buffer[reader - 1] = '\0';
+		}
+		reader--;
+	}
+
+	printf("%s\n", buffer);
+	return (buffer);
+}

@@ -2,11 +2,11 @@
 #include <stdio.h>
 
 /**
- * main - execve example
+ * execprogram - execve example
  *
  * Return: Always 0.
  */
-int main(void)
+int execprogram(void)
 {
     char *argv[] = {"/bin/ls", "-l", "/usr/", NULL};
 
