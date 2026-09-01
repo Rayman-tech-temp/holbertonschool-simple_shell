@@ -15,9 +15,11 @@ char *readline(void)
 	size_t buffs;
 	ssize_t reader;
 
+	buffs = 0;
+	printf("(_8^(|) ");
 	reader = getline(&buffer, &buffs, stdin);
 	
-	printf("testing to see if works");
+	
 	if (reader != -1)
 	{
 		if (buffer[reader - 1] == '\n')
