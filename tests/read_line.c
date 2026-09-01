@@ -19,7 +19,6 @@ char *readline(void)
 	printf("(_8^(|) ");
 	reader = getline(&buffer, &buffs, stdin);
 	
-	
 	if (reader != -1)
 	{
 		if (buffer[reader - 1] == '\n')
