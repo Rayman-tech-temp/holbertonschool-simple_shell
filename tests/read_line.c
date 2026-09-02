@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
 #include "main.h"
 
 /**
@@ -18,15 +15,22 @@ char *readline(void)
 	buffs = 0;
 	printf("(_8^(|) ");
 	reader = getline(&buffer, &buffs, stdin);
-	
-	if (reader != -1)
+	if (reader == -1)
 	{
-		if (buffer[reader - 1] == '\n')
-		{
-			buffer[reader - 1] = '\0';
-		}
-		reader--;
+		free(buffer);
+		return (NULL);
 	}
+	if (reader == 1)
+	{
+		free(buffer);
+		return ("");
+	}
+	
+		if (buffer[0] == '\n' || buffer[0] == '\0')
+		{
+			free(buffer);
+			return ("");
+		}
 
 	printf("%s\n", buffer);
 	return (buffer);

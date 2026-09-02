@@ -1,10 +1,5 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <signal.h>
-#include <string.h>
+
 /**
  * main - running the main shell
  *
@@ -17,13 +12,12 @@ int main(void)
 	pid_t child;
 
 	/*signal(SIGINT, SIG_IGN);*/
-	while (status == 0)
+	while ((line = readline()) != NULL);
 	{
-		line = readline();
 		if (strcmp(line, "") == 0)
 		{
 			perror("Error: no input");
-			free(line);
+			continue;
 		}
 		else if (strcmp(line, "exit") == 0)
 		{
