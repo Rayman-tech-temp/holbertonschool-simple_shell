@@ -5,10 +5,8 @@ int main(void)
 	char *line;
 	int status;
 	pid_t child;
-	pid_t my_pid;
 
 	status = 0;
-	my_pid = getpid();
 	/*signal(SIGINT, SIG_IGN);*/
 	while (status == 0)
 	{
@@ -34,13 +32,10 @@ int main(void)
 			}
 		  if (child == 0)
 			{
-			
-				printf("child %u\n", child);
 				execprogram(line);
 			}
 			else
 			{
-				printf("my_pid %u\n", my_pid);
 				wait(&status);
 			}
 
