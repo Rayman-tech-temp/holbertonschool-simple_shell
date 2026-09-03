@@ -45,7 +45,7 @@ int main(int ac, char **av, char **env)
 	pid_t child;
 
 	status = 0;
-	/**signal(SIGINT, SIG_IGN); */
+	signal(SIGINT, SIG_IGN);
 	while (status == 0)
 	{
 		line = readline();
@@ -57,7 +57,7 @@ int main(int ac, char **av, char **env)
 		{
 			status = 1;
 			printf("Goodbye!\n");
-			_exit(1);
+			exit(status);
 		} else if (strcmp(line, "") > 0)
 		{
 			av = split_string(line);
