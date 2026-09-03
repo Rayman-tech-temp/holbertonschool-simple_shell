@@ -42,7 +42,7 @@ void sighand(int sig)
 }
 
 /**
- * envvar - printing the enviorment
+ * envvar -
  * @ac: argument count
  * @av: the argument variables
  * @env: the enviorment
@@ -112,6 +112,7 @@ int main(int ac, char **av, char **env)
 			wait(&status);
 		}
 		}
+		free(line);
 	}
 		return (0);
 }
