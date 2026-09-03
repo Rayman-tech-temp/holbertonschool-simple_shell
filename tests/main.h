@@ -8,7 +8,10 @@
 #include <signal.h>
 #include <sys/wait.h>
 
+extern char **environ;
+
 char *readline(void);
+void sighand(int sig);
 int execprogram(char **command);
 char **split_string(char *str);
 int envvar(int ac, char **av, char **env);
