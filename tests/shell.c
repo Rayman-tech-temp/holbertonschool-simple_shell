@@ -43,11 +43,12 @@ int main(int ac, char **av, char **env)
 	char *line;
 	int status;
 	pid_t child;
-
+	
+	ac = 0;
 	status = 0;
-	signal(SIGINT, SIG_IGN);
-	while (status == 0)
+	while (ac == 0)
 	{
+		signal(SIGINT, SIG_IGN);
 		line = readline();
 		if (strcmp(line, "") == 0)
 		{

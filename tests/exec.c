@@ -12,7 +12,7 @@ int execprogram(char **command)
 	if (execve(command[0], command, NULL) == -1)
 	{
 		perror("Error:");
-		return (-1);
+		exit (-1);
 	}
 	execve(command[0], command, NULL);
 	return (0);
