@@ -29,7 +29,43 @@ char **split_string(char *str)
 
 	return (array);
 }
+/**
+ * sighand - handling the SIGINT
+ * @sig: the signal being used.
+ */
+void sighand(int sig)
+{
+	signal(sig, sighand);
+	printf("\n(ノಠ益ಠ)ノ彡 ");
+	fflush(stdout);
+	
+}
 
+/**
+ * envvar - printing the enviorment
+ * @ac: argument count
+ * @av: the argument variables
+ * @env: the enviorment
+ *
+ * Return: 0 Always
+ */
+int envvar(int ac, char **av, char **env)
+{
+	unsigned int i;
+	char *pattern, *key, *value;
+
+	i = 0;
+
+	pattern = "_";
+	while (env[i] != NULL)
+	{
+		key = strtok(env[i], "=");
+		if (strcmp(key, pattern) == 0)
+			value = strtok(NULL, "=");
+		i++;
+	}
+	return (0);
+}
 /**
  * main - main shell
  * @ac: argument counter
@@ -48,7 +84,7 @@ int main(int ac, char **av, char **env)
 	status = 0;
 	while (ac == 0)
 	{
-		signal(SIGINT, SIG_IGN);
+		signal(SIGINT, sighand);
 		line = readline();
 		if (strcmp(line, "") == 0)
 		{
