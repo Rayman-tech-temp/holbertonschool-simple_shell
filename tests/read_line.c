@@ -10,13 +10,14 @@ char *readline(void)
 {
 	char *buffer;
 	size_t buffs;
-	ssize_t reader;
+	int reader;
 
 	buffs = 0;
+	if (isatty(STDIN_FILENO))
+	{
 	printf("(_8^(|) ");
+	}
 	reader = getline(&buffer, &buffs, stdin);
-
-
 	if (reader != -1)
 	{
 		if (buffer[reader - 1] == '\n')
@@ -24,6 +25,11 @@ char *readline(void)
 			buffer[reader - 1] = '\0';
 		}
 		reader--;
+	}
+	else
+	{
+		buffer = "exit";
+		return (buffer);
 	}
 
 	printf("%s\n", buffer);

@@ -29,45 +29,23 @@ char **split_string(char *str)
 
 	return (array);
 }
-/**
- * envvar - printing the enviorment
- * @ac: argument count
- * @av: the argument variables
- * @env: the enviorment
- *
- * Return: 0 Always
- */
-int envvar(int ac, char **av, char **env)
-{
-	unsigned int i;
-	char *pattern, *key, *value;
-
-	i = 0;
-
-	pattern = "_";
-	while (env[i] != NULL)
-	{
-		key = strtok(env[i], "=");
-		if (strcmp(key, pattern) == 0)
-			value = strtok(NULL, "=");
-		i++;
-	}
-	return (0);
-}
 
 /**
  * main - main shell
+ * @ac: argument counter
+ * @av: argument value
+ * @env: enviorment variables
  *
  * Return: 0 Always
  */
-int main(void)
+int main(int ac, char **av, char **env)
 {
-	char *line, **args;
+	char *line;
 	int status;
 	pid_t child;
 
 	status = 0;
-	signal(SIGINT, SIG_IGN);
+	/**signal(SIGINT, SIG_IGN); */
 	while (status == 0)
 	{
 		line = readline();
@@ -75,16 +53,14 @@ int main(void)
 		{
 			perror("Error: no input");
 			free(line);
-		}
-		else if (strcmp(line, "exit") == 0)
+		} else if (strcmp(line, "exit") == 0)
 		{
 			status = 1;
 			printf("Goodbye!\n");
 			_exit(1);
-		}
-		else if (strcmp(line, "") > 0)
+		} else if (strcmp(line, "") > 0)
 		{
-			args = split_string(line);
+			av = split_string(line);
 			child = fork();
 		if (child == -1)
 		{
@@ -93,9 +69,8 @@ int main(void)
 		}
 		if (child == 0)
 		{
-			execprogram(args);
-		}
-		else
+			execprogram(av);
+		} else
 		{
 			wait(&status);
 		}
