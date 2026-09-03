@@ -57,15 +57,15 @@ int main(int ac, char **av, char **env)
 		{
 			status = 1;
 			printf("Goodbye!\n");
-			exit(status);
+			_exit(status);
 		} else if (strcmp(line, "") > 0)
 		{
 			av = split_string(line);
 			child = fork();
 		if (child == -1)
 		{
-			perror("Error:");
-			exit(-1);
+			perror("Error");
+			_exit(-1);
 		}
 		if (child == 0)
 		{
