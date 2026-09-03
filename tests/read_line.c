@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-* read_line - reading the provided line
+* readline - reading the provided line
 *
 * Return: line without the '$'
 */
@@ -15,8 +15,8 @@ char *readline(void)
 	buffs = 0;
 	printf("(_8^(|) ");
 	reader = getline(&buffer, &buffs, stdin);
-	
-	
+
+
 	if (reader != -1)
 	{
 		if (buffer[reader - 1] == '\n')
