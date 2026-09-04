@@ -12,6 +12,7 @@ char *readline(void);
 int execprogram(char **command);
 char **split_string(char *str);
 int envvar(int ac, char **av, char **env);
+char *find_path(char *command);
 
 
 #endif
