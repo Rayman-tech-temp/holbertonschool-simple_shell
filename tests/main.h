@@ -9,9 +9,9 @@
 #include <sys/wait.h>
 
 char *readline(void);
-int execprogram(char **command);
+int execprogram(char **command, char **env, int ac);
 char **split_string(char *str);
-int envvar(int ac, char **av, char **env);
+int envprint(char **env);
 
 
 #endif

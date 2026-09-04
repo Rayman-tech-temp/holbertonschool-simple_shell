@@ -69,7 +69,7 @@ int main(int ac, char **av, char **env)
 		}
 		if (child == 0)
 		{
-			execprogram(av);
+			execprogram(av, env, ac);
 		} else
 		{
 			wait(&status);
