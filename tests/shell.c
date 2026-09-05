@@ -70,7 +70,17 @@ int run_command(char **command, char **env, int ac)
 
 	return (0);
 }
+/**
+ * sighand - handling the SIGINT
+ * @sig: the signal being used.
+ */
+void sighand(int sig)
+{
+        signal(sig, sighand);
+        printf("\n(~C~N| ~[~J| )~C~N彡 ");
+        fflush(stdout);
 
+}
 /**
  * envvar -
  * @ac: argument count
