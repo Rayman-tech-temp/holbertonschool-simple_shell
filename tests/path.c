@@ -1,18 +1,51 @@
 #include "main.h"
 
 /**
- * find_path - finds the full path of a command
+ * path_search - searches PATH for a command
+ * @path: PATH environment variable
  * @command: command to find
  *
  * Return: full path or NULL
  */
-
-char *find_path(char *command)
+char *path_search(char *path, char *command)
 {
-	char *path;
 	char *dir;
 	char *full_path;
 	size_t length;
+
+	dir = strtok(path, ":");
+	while (dir != NULL)
+	{
+		length = strlen(dir) + strlen(command) + 2;
+		full_path = malloc(length);
+		if (full_path == NULL)
+			return (NULL);
+
+		strcpy(full_path, dir);
+		strcat(full_path, "/");
+		strcat(full_path, command);
+
+		if (access(full_path, X_OK) == 0)
+			return (full_path);
+
+		free(full_path);
+		dir = strtok(NULL, ":");
+	}
+
+	return (NULL);
+}
+
+/**
+ * find_path - finds the full path of a command
+ * @command: command to find
+ * @env: environment variables
+ *
+ * Return: full path or NULL
+ */
+char *find_path(char *command, char **env)
+{
+	char *path;
+	char *result;
 
 	if (command == NULL)
 		return (NULL);
@@ -22,42 +55,20 @@ char *find_path(char *command)
 		if (access(command, X_OK) == 0)
 			return (strdup(command));
 
-		return (NULL);
+	return (NULL);
 	}
 
-	path = getenv("PATH");
+	path = find_env(env);
 	if (path == NULL)
 		return (NULL);
 
 	path = strdup(path);
 	if (path == NULL)
-		return (NULL);
-
-	dir = strtok(path, ":");
-
-	while (dir != NULL)
-	{
-		length = strlen(dir) + strlen(command) + 2;
-
-		full_path = malloc(length);
-		if (full_path == NULL)
-		{
-			free(path);
-			return (NULL);
-		}
-
-		printf(full_path, length, "%s/%s", dir, command);
-
-		if (access(full_path, X_OK) == 0)
-		{
-			free(path);
-			return (full_path);
-		}
-
-		free(full_path);
-		dir = strtok(NULL, ":");
-	}
-
-	free(path);
 	return (NULL);
+
+	result = path_search(path, command);
+	free(path);
+
+	return (result);
 }
+
