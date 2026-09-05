@@ -30,17 +30,57 @@ char **split_string(char *str)
 	return (array);
 }
 /**
+ * run_command - finds and executes a command
+ * @command: command and arguments
+ * @env: environment variables
+ * @ac: argument count
+ *
+ * Return: 0
+ */
+int run_command(char **command, char **env, int ac)
+{
+	char *path;
+	pid_t child;
+	int wait_status;
+
+	path = find_path(command[0], env);
+	if (path == NULL)
+	{
+		printf("Error: %d:", ac);
+		perror(" ");
+		return (0);
+	}
+
+	child = fork();
+	if (child == -1)
+	{
+		perror("Error");
+		free(path);
+		return (0);
+	}
+
+	if (child == 0)
+	{
+		execprogram(command, env, ac, path);
+		_exit(127);
+	}
+
+	wait(&wait_status);
+	free(path);
+
+	return (0);
+}
+/**
  * sighand - handling the SIGINT
  * @sig: the signal being used.
  */
 void sighand(int sig)
 {
-	signal(sig, sighand);
-	printf("\n(ノಠ益ಠ)ノ彡 ");
-	fflush(stdout);
-	
-}
+        signal(sig, sighand);
+        printf("\n(~C~N| ~[~J| )~C~N彡 ");
+        fflush(stdout);
 
+}
 /**
  * envvar -
  * @ac: argument count
@@ -106,7 +146,7 @@ int main(int ac, char **av, char **env)
 		}
 		if (child == 0)
 		{
-			execprogram(av, env, ac);
+			run_command(av, env, ac);
 		} else
 		{
 			wait(&status);
@@ -115,4 +155,4 @@ int main(int ac, char **av, char **env)
 		free(line);
 	}
 		return (status);
-}
+
