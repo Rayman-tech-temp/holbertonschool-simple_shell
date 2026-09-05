@@ -13,9 +13,11 @@ extern char **environ;
 char *readline(void);
 void sighand(int sig);
 char *path_finder(void);
-int execprogram(char **command);
+int execprogram(char **command, char **env, int ac);
 char **split_string(char *str);
-int envvar(int ac, char **av, char **env);
+char *find_path(char *command);
+int envprint(char **env);
+char *find_env(char **env)
 
 
 #endif
