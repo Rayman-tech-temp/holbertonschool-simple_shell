@@ -23,11 +23,5 @@ COMMAND EXPLANATION
 	this happens by opening the 'manual' directory and opening the command 
 	manual file and writes it to the terminal.
 
-	RETURNS
-	 0 - successfully prints a file of a command to new Window.
-	-1 - failed to find file.
-	-2 - failed to run command.
-	-3 - failed to print.
-
 AUTHOR
-	Written by Ray Callegari, consulted with Zac Downie
+	Written by Ray Callegari, Zac Downie and Nathan Balshaw.
