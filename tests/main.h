@@ -12,6 +12,7 @@ char *readline(void);
 int execprogram(char **command, char **env, int ac);
 char **split_string(char *str);
 int envprint(char **env);
+char *find_env(char **env)
 
 
 #endif

@@ -1,11 +1,11 @@
 #include "main.h"
+
 /**
  * split_string - splitting string without white spaces
  * @str: the sring being split
  *
  * Return: split string
  */
-
 char **split_string(char *str)
 {
 	char *token;
