@@ -1,11 +1,11 @@
 #include "main.h"
+
 /**
  * split_string - splitting string without white spaces
  * @str: the sring being split
  *
  * Return: split string
  */
-
 char **split_string(char *str)
 {
 	char *token;
@@ -69,7 +69,7 @@ int main(int ac, char **av, char **env)
 		}
 		if (child == 0)
 		{
-			execprogram(av);
+			execprogram(av, env, ac);
 		} else
 		{
 			wait(&status);
