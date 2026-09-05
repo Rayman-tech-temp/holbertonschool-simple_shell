@@ -10,17 +10,21 @@
 char *find_env(char **env)
 {
 	unsigned int i;
-	char *pattern, *key, *value;
+	char *pattern, *key, *value, *temp;
 
 	i = 0;
-
 	pattern = "PATH";
-	while (env[i] != NULL)
+	value = "banana";
+	while (env[i] != NULL && strcmp(value, "banana") == 0)
 	{
-		key = strtok(env[i], "=");
+		temp = strdup(env[i]);
+		key = strtok(temp, "=");
 		if (strcmp(key, pattern) == 0)
 			value = strtok(NULL, "=");
+
 		i++;
+		temp = NULL;
+		free(temp);
 	}
 	return (value);
 }
@@ -63,7 +67,7 @@ int execprogram(char **command, char **env, int ac, char *path)
 		printf("Error: %d:", ac);
 		perror(" ");
 	} else if (strcmp(*command, "env") != 0)
-		execve(strcat(path, command[0]), command, NULL);
+		execve(strcat(path, command[0]), command, environ);
 
 	return (0);
 }

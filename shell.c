@@ -127,7 +127,7 @@ int main(int ac, char **av, char **env)
 			wait(&status);
 			}
 		}
+		free(line);
 	}
-	free(line);
 	return (status);
 }
