@@ -64,10 +64,11 @@ char *find_path(char *command, char **env)
 
 	path = strdup(path);
 	if (path == NULL)
-		return (NULL);
+	return (NULL);
 
 	result = path_search(path, command);
 	free(path);
 
 	return (result);
 }
+

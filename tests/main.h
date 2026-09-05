@@ -16,5 +16,4 @@ char *path_search(char *path, char *command);
 int envprint(char **env);
 char *find_env(char **env);
 
-#endif                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-~                                                                                                                                                                                                               
+#endif
