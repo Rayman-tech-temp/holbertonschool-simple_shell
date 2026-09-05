@@ -76,36 +76,11 @@ int run_command(char **command, char **env, int ac)
  */
 void sighand(int sig)
 {
-        signal(sig, sighand);
-        printf("\n(ノಠ益ಠ)ノ彡 ");
-        fflush(stdout);
-
+	signal(sig, sighand);
+	printf("\n(ノಠ益ಠ)ノ彡 ");
+	fflush(stdout);
 }
-/**
- * envvar -
- * @ac: argument count
- * @av: the argument variables
- * @env: the enviorment
- *
- * Return: 0 Always
- */
-int envvar(int ac, char **av, char **env)
-{
-	unsigned int i;
-	char *pattern, *key, *value;
 
-	i = 0;
-
-	pattern = "_";
-	while (env[i] != NULL)
-	{
-		key = strtok(env[i], "=");
-		if (strcmp(key, pattern) == 0)
-			value = strtok(NULL, "=");
-		i++;
-	}
-	return (0);
-}
 /**
  * main - main shell
  * @ac: argument counter
@@ -119,7 +94,7 @@ int main(int ac, char **av, char **env)
 	char *line;
 	int status;
 	pid_t child;
-	
+
 	ac = 0;
 	status = 0;
 	while (ac == 0)
@@ -139,20 +114,20 @@ int main(int ac, char **av, char **env)
 		{
 			av = split_string(line);
 			child = fork();
-		if (child == -1)
-		{
-			perror("Error");
-			_exit(-1);
-		}
-		if (child == 0)
-		{
-			run_command(av, env, ac);
-		} else
-		{
+			if (child == -1)
+			{
+				perror("Error");
+				_exit(-1);
+			}
+			if (child == 0)
+			{
+				run_command(av, env, ac);
+			} else
+			{
 			wait(&status);
+			}
 		}
-		}
-		free(line);
 	}
-		return (status);
-
+	free(line);
+	return (status);
+}

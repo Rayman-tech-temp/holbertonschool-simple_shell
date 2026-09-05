@@ -11,6 +11,7 @@
 extern char **environ;
 
 char *readline(void);
+char *find_env(char **env);
 int execprogram(char **command, char **env, int ac, char *path);
 void sighand(int sig);
 char *path_finder(void);
@@ -18,6 +19,5 @@ char **split_string(char *str);
 char *find_path(char *command, char **env);
 char *path_search(char *path, char *command);
 int envprint(char **env);
-char *find_env(char **env);
 
 #endif
