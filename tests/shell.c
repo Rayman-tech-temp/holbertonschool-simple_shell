@@ -77,7 +77,7 @@ int run_command(char **command, char **env, int ac)
 void sighand(int sig)
 {
         signal(sig, sighand);
-        printf("\n(~C~N| ~[~J| )~C~N彡 ");
+        printf("\n(ノಠ益ಠ)ノ彡 ");
         fflush(stdout);
 
 }
