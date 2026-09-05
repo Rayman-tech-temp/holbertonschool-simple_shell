@@ -1,0 +1,33 @@
+NAME 
+	man
+	
+SYNOPSIS
+
+	this is a program that merges function and system calls to manipulate
+information on your device! we hope this is simpler...
+
+COMMAND SUMMARIES
+
+	man - prints this whole manual, have fun reading.
+
+	ls - lists all files in a directory
+
+	env - prints the collection of system variables and values.
+
+COMMAND EXPLANATION
+
+	man - Print text that fully elaborates on what commands are doing 
+	on a programic level. 
+
+	The command prints this entire document or a command's file specified.
+	this happens by opening the 'manual' directory and opening the command 
+	manual file and writes it to the terminal.
+
+	RETURNS
+	 0 - successfully prints a file of a command to new Window.
+	-1 - failed to find file.
+	-2 - failed to run command.
+	-3 - failed to print.
+
+AUTHOR
+	Written by Ray Callegari, consulted with Zac Downie
