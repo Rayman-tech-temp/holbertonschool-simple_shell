@@ -70,17 +70,6 @@ int run_command(char **command, char **env, int ac)
 
 	return (0);
 }
-/**
- * sighand - handling the SIGINT
- * @sig: the signal being used.
- */
-void sighand(int sig)
-{
-	signal(sig, sighand);
-	printf("\n(ノಠ益ಠ)ノ彡 ");
-	fflush(stdout);
-	
-}
 
 /**
  * envvar -
@@ -147,7 +136,7 @@ int main(int ac, char **av, char **env)
 		}
 		if (child == 0)
 		{
-			execprogram(av, env, ac);
+			run_command(av, env, ac);
 		} else
 		{
 			wait(&status);
@@ -156,4 +145,4 @@ int main(int ac, char **av, char **env)
 		free(line);
 	}
 		return (status);
-}
+
