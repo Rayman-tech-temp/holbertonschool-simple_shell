@@ -1,5 +1,45 @@
 #include "main.h"
 
+
+char *path_finder (void)
+{
+	int i;
+	char *env;
+	char *path;
+	char *token;
+
+	i = 0;
+	path = NULL;
+
+	while (environ[i] != NULL)
+	{
+		env = malloc(sizeof(char) * (strlen(environ[i]) + 1));
+		strcpy(env, environ[i]);
+		token = strtok(env, "=");
+		if (strcmp(environ[i], "PATH") == 0)
+		{
+			token = strtok(NULL, "=");
+			if (token == NULL)
+			{
+				free(env);
+				return (NULL);
+			}
+			path = malloc(sizeof(char) * (strlen(token) + 1));
+			if (path == NULL || token == NULL)
+			{
+				free(env);
+				return (NULL);
+			}
+			strcpy(path, token);
+			free(env);
+			break;
+		}
+		i = i + 1;
+		free(env);
+	}
+
+	return (path);
+}
 /**
  * find_env - replacement of getenv used in handling
  * PATH for commands.

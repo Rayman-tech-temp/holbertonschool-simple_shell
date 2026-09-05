@@ -15,7 +15,7 @@ char *readline(void)
 	buffs = 0;
 	if (isatty(STDIN_FILENO))
 	{
-	printf("(_8^(|) ");
+	printf("(ノಠ益ಠ)ノ彡 ");
 	}
 	reader = getline(&buffer, &buffs, stdin);
 	if (reader != -1)
