@@ -26,10 +26,12 @@ char *readline(void)
 		}
 		reader--;
 	}
-	else
+	
+	if (reader == -1)
 	{
 		buffer = "exit";
 		return (buffer);
+		free (buffer);
 	}
 
 	printf("%s\n", buffer);

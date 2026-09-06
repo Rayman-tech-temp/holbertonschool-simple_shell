@@ -97,7 +97,6 @@ int main(int ac, char **av, char **env)
 		} else if (strcmp(line, "exit") == 0)
 		{
 			status = 0;
-			free(line);
 			_exit(status);
 		} else if (strcmp(line, "") > 0)
 		{
