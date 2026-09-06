@@ -1,27 +1,12 @@
-NAME 
-	man
-	
 SYNOPSIS
-
-	this is a program that merges function and system calls to manipulate
+	this is a command interpreter program that merges functions and system calls to manipulate
 information on your device! we hope this is simpler...
 
 COMMAND SUMMARIES
 
-	man - prints this whole manual, have fun reading.
-
 	ls - lists all files in a directory
 
 	env - prints the collection of system variables and values.
-
-COMMAND EXPLANATION
-
-	man - Print text that fully elaborates on what commands are doing 
-	on a programic level. 
-
-	The command prints this entire document or a command's file specified.
-	this happens by opening the 'manual' directory and opening the command 
-	manual file and writes it to the terminal.
 
 AUTHOR
 	Written by Ray Callegari, Zac Downie and Nathan Balshaw.
