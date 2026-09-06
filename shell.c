@@ -100,7 +100,7 @@ int main(int ac, char **av, char **env)
 			_exit(status);
 		} else if (strcmp(line, "") > 0)
 		{
-			av = split_string(line);
+			av = split_string(line);	
 			child = fork();
 			if (child == -1)
 			{
@@ -115,6 +115,7 @@ int main(int ac, char **av, char **env)
 			wait(&status);
 			}
 		}
+		free(av);
 		free(line);
 	}
 	return (status);

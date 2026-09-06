@@ -12,6 +12,7 @@ char *readline(void)
 	size_t buffs;
 	int reader;
 
+	buffer = NULL;
 	buffs = 0;
 	if (isatty(STDIN_FILENO))
 	{
@@ -29,9 +30,8 @@ char *readline(void)
 	
 	if (reader == -1)
 	{
-		buffer = "exit";
-		return (buffer);
-		free (buffer);
+		free(buffer);
+		return ("exit");
 	}
 
 	return (buffer);
