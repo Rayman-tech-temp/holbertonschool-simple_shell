@@ -15,7 +15,7 @@ char *readline(void)
 	buffs = 0;
 	if (isatty(STDIN_FILENO))
 	{
-	printf("(ノಠ益ಠ)ノ彡 ");
+	printf("(ノಠ益ಠ)ノ彡");
 	}
 	reader = getline(&buffer, &buffs, stdin);
 	if (reader != -1)
@@ -34,6 +34,5 @@ char *readline(void)
 		free (buffer);
 	}
 
-	printf("%s\n", buffer);
 	return (buffer);
 }
