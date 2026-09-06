@@ -19,6 +19,6 @@ char *path_finder(void);
 char **split_string(char *str);
 char *find_path(char *command, char **env);
 char *path_search(char *path, char *command);
-int envprint(char **env);
+int envprint(void);
 
 #endif

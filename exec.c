@@ -38,14 +38,14 @@ char *find_env(char **env)
  * Return: int - a number regarding success or
  * failure of execution of this function.
  */
-int envprint(char **env)
+int envprint(void)
 {
 	unsigned int i;
 
 	i = 0;
-	while (env[i] != NULL)
+	while (environ[i] != NULL)
 	{
-		printf("%s\n", env[i]);
+		printf("%s\n", environ[i]);
 		i = i + 1;
 	}
 	return (0);
@@ -60,11 +60,7 @@ int envprint(char **env)
  */
 int execprogram(char **command, char **env)
 {
-	if (strcmp(*command, "env") == 0)
-	{
-		envprint(env);
-		return (0);
-	} else if (execve(command[0], command, env) == -1)
+	if (execve(command[0], command, env) == -1)
 	{
 		free(command);
 		_exit(2);

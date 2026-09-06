@@ -95,7 +95,12 @@ int main(int ac, char **av, char **env)
 			status = 0;
 			free(line);
 			_exit(0);
-		} else if (strcmp(line, "") > 0)
+		} else if (strcmp(line, "env") == 0)
+		{
+			envprint();
+			continue;
+
+		}else if (strcmp(line, "") > 0)
 		{
 			av = split_string(line);
 			child = fork();
