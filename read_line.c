@@ -1,5 +1,20 @@
 #include "main.h"
 
+
+void trim(char *input)
+{
+	size_t i;
+	size_t len;
+
+	len = strlen(input);
+	i = len - 1;
+	while (input[i] == ' ')
+	{
+		input[i] = '\0';
+		i--;
+	}
+	return;
+}
 /**
 * readline - reading the provided line
 *
@@ -33,6 +48,11 @@ char *readline(void)
 		free(buffer);
 		return ("exit");
 	}
-
+	trim(buffer);
+	if (buffer[0] == '\0' || buffer[0] == '\n')
+	{
+		free(buffer);
+		return ("");
+	}
 	return (buffer);
 }

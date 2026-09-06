@@ -50,7 +50,6 @@ int run_command(char **command, char **env, int ac)
 		free(path);
 		_exit(1);
 	}
-
 		execprogram(command, env, ac);
 		_exit(127);
 
@@ -92,15 +91,15 @@ int main(int ac, char **av, char **env)
 		line = readline();
 		if (strcmp(line, "") == 0)
 		{
-			perror("Error: no input");
-			free(line);
+			printf("Error: no input\n");
+			continue;
 		} else if (strcmp(line, "exit") == 0)
 		{
 			status = 0;
 			_exit(status);
 		} else if (strcmp(line, "") > 0)
 		{
-			av = split_string(line);	
+			av = split_string(line);
 			child = fork();
 			if (child == -1)
 			{
