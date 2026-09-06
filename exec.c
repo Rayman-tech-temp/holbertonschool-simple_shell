@@ -56,19 +56,19 @@ int envprint(char **env)
  * @path: prefix of command directory.
  * Return: Always 0.
  */
-int execprogram(char **command, char **env, int ac, char *path)
+int execprogram(char **command, char **env, int ac)
 {
 	if (strcmp(*command, "env") == 0)
 	{
 		envprint(env);
-	} else if (execve(command[0], command, NULL) == -1
-	&& strcmp(*command, "env") != 0)
+		return (0);
+	} else if (execve(command[0], command, env) == -1)
 	{
 		printf("Error: %d:", ac);
 		perror(" ");
-	} else if (strcmp(*command, "env") != 0)
-		execve(strcat(path, command[0]), command, environ);
-
+		free(command);
+		_exit(1);
+	}
 	return (0);
 }
 

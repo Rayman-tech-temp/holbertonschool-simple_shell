@@ -40,30 +40,19 @@ char **split_string(char *str)
 int run_command(char **command, char **env, int ac)
 {
 	char *path;
-	pid_t child;
 	int wait_status;
 
-	path = find_path(command[0], env);
+	path = find_path(command[0], environ);
 	if (path == NULL)
 	{
 		printf("Error: %d:", ac);
 		perror(" ");
-		return (0);
-	}
-
-	child = fork();
-	if (child == -1)
-	{
-		perror("Error");
 		free(path);
-		return (0);
+		_exit(1);
 	}
 
-	if (child == 0)
-	{
-		execprogram(command, env, ac, path);
+		execprogram(command, env, ac);
 		_exit(127);
-	}
 
 	wait(&wait_status);
 	free(path);
@@ -109,6 +98,7 @@ int main(int ac, char **av, char **env)
 		{
 			status = 1;
 			printf("Goodbye!\n");
+			free(line);
 			_exit(status);
 		} else if (strcmp(line, "") > 0)
 		{
