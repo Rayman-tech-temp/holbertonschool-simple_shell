@@ -3,12 +3,12 @@
 
 void trim(char *input)
 {
-	size_t i;
-	size_t len;
-
+	int i;
+	int len;
+	i = 0;
 	len = strlen(input);
 	i = len - 1;
-	while (input[i] == ' ')
+	while (i >= 0 && input[i] == ' ')
 	{
 		input[i] = '\0';
 		i--;

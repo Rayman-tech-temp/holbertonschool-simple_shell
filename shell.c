@@ -91,7 +91,6 @@ int main(int ac, char **av, char **env)
 		line = readline();
 		if (strcmp(line, "") == 0)
 		{
-			printf("Error: no input\n");
 			continue;
 		} else if (strcmp(line, "exit") == 0)
 		{
