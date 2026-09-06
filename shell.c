@@ -45,8 +45,6 @@ int run_command(char **command, char **env, int ac)
 	path = find_path(command[0], environ);
 	if (path == NULL)
 	{
-		printf("Error: %d:", ac);
-		perror(" ");
 		free(path);
 		_exit(1);
 	}
@@ -95,6 +93,7 @@ int main(int ac, char **av, char **env)
 		} else if (strcmp(line, "exit") == 0)
 		{
 			status = 0;
+			free(line);
 			_exit(status);
 		} else if (strcmp(line, "") > 0)
 		{

@@ -67,10 +67,8 @@ int execprogram(char **command, char **env, int ac)
 		return (0);
 	} else if (execve(command[0], command, env) == -1)
 	{
-		printf("Error: %d:", ac);
-		perror(" ");
 		free(command);
-		_exit(1);
+		_exit(ac);
 	}
 	return (0);
 }
