@@ -92,9 +92,9 @@ int main(int ac, char **av, char **env)
 			continue;
 		} else if (strcmp(line, "exit") == 0)
 		{
-			status = 2;
+			status = 0;
 			free(line);
-			_exit(status);
+			_exit(0);
 		} else if (strcmp(line, "") > 0)
 		{
 			av = split_string(line);
