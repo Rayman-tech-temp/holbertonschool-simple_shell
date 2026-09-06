@@ -1,6 +1,3 @@
-this sentence is false
-
-Please read the Google doc shared with you to get a draft on what's going on.
 # Simple Shell
 
 ### commands
@@ -11,10 +8,10 @@ Runs arguments given in the temrinal line (non-interactive mode).
 
 the main body of the shell program that handles parametres from the user and the system it is running from, 
 
-#### man - by me
-	a simple read and print file command that containes a summary, maybe print separeate pages.
+#### man - by Ray
+a file that containes a summary, of available commands.
 
-#### ls - by nathan
-
-#### env - by me
-	shows all environment variables passed to the shell.
+#### path - by Nathan
+feature that fills in the shell commands directory when user inputs 
+#### env - by Ray
+shows all environment variables available to the shell.
