@@ -55,11 +55,10 @@ int envprint(char **env)
  * execprogram - execve example.
  * @command: the arguments/code being executed.
  * @env: passed env variable from main.
- * @ac: argument count - use for error printing.
  * @path: prefix of command directory.
  * Return: Always 0.
  */
-int execprogram(char **command, char **env, int ac)
+int execprogram(char **command, char **env)
 {
 	if (strcmp(*command, "env") == 0)
 	{
@@ -68,7 +67,7 @@ int execprogram(char **command, char **env, int ac)
 	} else if (execve(command[0], command, env) == -1)
 	{
 		free(command);
-		_exit(ac);
+		_exit(2);
 	}
 	return (0);
 }

@@ -12,7 +12,7 @@ extern char **environ;
 
 char *readline(void);
 char *find_env(char **env);
-int execprogram(char **command, char **env, int ac);
+int execprogram(char **command, char **env);
 
 void sighand(int sig);
 char *path_finder(void);

@@ -37,7 +37,7 @@ char **split_string(char *str)
  *
  * Return: 0
  */
-int run_command(char **command, char **env, int ac)
+int run_command(char **command, char **env)
 {
 	char *path;
 	int wait_status;
@@ -48,7 +48,7 @@ int run_command(char **command, char **env, int ac)
 		free(path);
 		_exit(1);
 	}
-		execprogram(command, env, ac);
+		execprogram(command, env);
 		_exit(127);
 
 	wait(&wait_status);
@@ -106,7 +106,7 @@ int main(int ac, char **av, char **env)
 			}
 			if (child == 0)
 			{
-				run_command(av, env, ac);
+				run_command(av, env);
 			} else
 			{
 			wait(&status);
