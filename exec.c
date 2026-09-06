@@ -26,6 +26,9 @@ char *find_env(char **env)
 		temp = NULL;
 		free(temp);
 	}
+	if (temp != NULL)
+		free(temp);
+
 	return (value);
 }
 /**
