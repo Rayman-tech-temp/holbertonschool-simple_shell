@@ -8,10 +8,10 @@ Runs arguments given in the temrinal line (non-interactive mode).
 
 the main body of the shell program that handles parametres from the user and the system it is running from, 
 
-#### man - by me
+#### man - by Ray
 a file that containes a summary, of available commands.
 
-#### path - by nathan
+#### path - by Nathan
 feature that fills in the shell commands directory when user inputs 
-#### env - by me
+#### env - by Ray
 shows all environment variables available to the shell.
