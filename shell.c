@@ -96,7 +96,7 @@ int main(int ac, char **av, char **env)
 			free(line);
 		} else if (strcmp(line, "exit") == 0)
 		{
-			status = 1;
+			status = 0;
 			printf("Goodbye!\n");
 			free(line);
 			_exit(status);
